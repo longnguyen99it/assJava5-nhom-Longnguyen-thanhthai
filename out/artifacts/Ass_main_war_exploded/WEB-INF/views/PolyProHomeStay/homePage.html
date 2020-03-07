@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Bootstrap 4 Website Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: #aaa;
+        }
+
+        body {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<div class=""
+     style="height: 680px;background-size: 100% 100%;width: 100%;background-image: url(https://a0.muscache.com/4ea/air/r:w1550-h600-sfit,e:fjpg-c70/pictures/c49d2d28-c0ae-484b-9db9-0dc93a5e1cd4.jpg);">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top" style="background-color: white">
+        <i class="fa fa-cog fa-spin fa-3x fa-fw "></i>
+        <ul class="navbar-nav padding-left">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <h4 style="color: black">PolyBooking.com</h4>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav" style="padding-left: 650px;">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#section1" style="color: black">Địa điểm nổi tiếng</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#section2" style="color: black">HomeStay</a>
+                </li>
+                <li class="nav-item dropdown">
+
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: black">
+                        Kiểm tra code
+                    </a>
+                    <div class="dropdown-menu">
+                        <th:block th:if="${account == null}">
+                        <div class="dropdown-item">
+                            <form th:action="@{invoiceNoAccount}">
+                            <div class="input-group mb-3">
+                                <input type="number" class="form-control" placeholder="Code" style="width: 70px" name="code" required>
+                                <button type="submit" class="btn btn-link" style="color: black">Kiểm tra</button>
+                            </div>
+                        </form>
+                        </div>
+<!--                        <a class="dropdown-item" href="#section42">Link 2</a>-->
+                        </th:block>
+                        <th:block th:if="${account != null}">
+                            <a href="invoiceAccount" style="color: black">Hóa đơn</a>
+                        </th:block>
+                    </div>
+                    </li>
+                </li>
+            </ul>
+
+            <th:block th:if="${account == null}">
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="loginForm" style="color: black;padding-left: 5px">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRKC4sHghZjPEuxZeJEDBXVpxMGeBu4MkWceSbRC2STpPcpQjqq"
+                             alt="Logo" style="width:40px;">
+                        Đăng Nhập
+                    </a>
+                </li>
+            </th:block>
+            <th:block th:if="${account != null}">
+                <li class="nav-item active" style="padding-top: 2px">
+                    <h5>
+                        <img src="https://cdn2.iconfinder.com/data/icons/4web-3/139/header-account-image-line-512.png"
+                             alt="Logo" style="width:40px;">
+                        <th:block th:utext="${account.userName}" />--<a href="/" style="color: red">exit</a>
+                    </h5>
+                </li>
+            </th:block>
+        </ul>
+
+    </nav>
+    <div class="container" style="padding-left: 100px;padding-top: 120px;">
+        <div class="jumbotron" style="width: 600px;height: 400px;;background-color:white;">
+            <h2>Tìm kiếm HomeStay mọi nơi với PolyBooking.com</h2>
+            <p>Hãy điền nơi bạn cần đến</p>
+            <form class="form-inline" action="seach">
+                <div class="">
+                    <input type="text" class="form-control" placeholder="Address" id="email" name="address"
+                           style="width: 500px;height: 50px;">
+                </div>
+                <div class="container" style="padding-left: 0;padding-top: 20px;">
+                    <button type="submit" class="btn btn-danger" style="width: 500px;">Tìm kiếm</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="container" style="padding-top: 50px;">
+    <div id="section1" class="container-fluid" style="padding-top:70px;padding-bottom:70px">
+        <h2>Gợi ý những địa điểm với HomeStay hoàn hảo nhất</h2>
+        <div class="row" >
+            <div class="col-sm-3" >
+                <a href="seach?address=ha noi">
+                    <img src="https://vntrip.cdn.vccloud.vn/cam-nang/wp-content/uploads/2017/07/anh5.jpg" class="rounded"
+                         alt="Cinque Terre" style="width: 260px;height: 200px;">
+                    <h4>Hà Nội</h4>
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a href="seach?address=da nang">
+                <img src="https://dinhvixemay.org/wp-content/uploads/2019/04/dinh-vi-xe-may-tai-da-nang.jpg" class="rounded"
+                     alt="Cinque Terre" style="width: 260px;height: 200px;">
+                <h4>Đà Nẵng</h4>
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a href="seach?address=da lat">
+                <img src="https://bazantravel.com/cdn/medias/uploads/19/19203-quang-truong-da-lat-10-600x297.jpg" class="rounded"
+                     alt="Cinque Terre" style="width: 260px;height: 200px;">
+                <h4>Đà Lạt</h4>
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a href="seach?address=hcm">
+                <img src="https://www.vntrip.vn/cam-nang/wp-content/uploads/2017/09/cho-ben-thanh-1.png" class="rounded"
+                     alt="Cinque Terre" style="width: 260px;height: 200px;">
+                <h4>TP. HCM</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="section2" class="container-fluid" style="padding-top:70px;padding-bottom:70px">
+        <h2>Những HomeStay mới nhất</h2>
+        <div class="row">
+            <th:block th:each="list : ${listHomeStayByIdDesc}">
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <a th:href="@{showHomeStayById/__${list.id}__}"><img
+                                    class="rounded"
+                                    th:src="${list.image}"
+                                    alt="Cinque Terre" style="width: 300px;height: 200px;"></a>
+                            <p>
+                                <th:block th:utext="${list.homeStayStyle}" />
+                            </p>
+                            <a th:href="@{showHomeStayById/__${list.id}__}">
+                                <h4>
+                                    <th:block th:utext="${list.homeStayName}" />
+                                </h4>
+                            </a>
+                            <div>
+                                <th:block th:utext="${list.adults}" /> khách -
+                                <th:block th:utext="${list.bedRoom}" /> Phòng ngủ -
+                                <th:block th:utext="${list.bathRoom}" /> Phòng tắm
+                            </div>
+                            <h5>
+                                <th:block th:utext="${list.price}" /> VND</h5>
+                            <p>
+                                <th:block th:utext="${list.address}" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+
+        </div>
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+        </ul>
+    </div>
+    <br>
+</div>
+<div class="jumbotron text-center">
+    <h1>Bootstrap Tutorial</h1>
+    <p>Bootstrap is the most popular HTML, CSS...</p>
+</div>
+</body>
+
+</html>

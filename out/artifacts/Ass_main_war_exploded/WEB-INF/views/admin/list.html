@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-danger" style="margin:24px 0;">
+    <div class="container">
+    <div class="navbar-collapse collapse" id="navb" style="">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <h5><a style="color: white" class="nav-link" th:href="@{showlist}">Danh Sách HomeStay</a></h5>
+            </li>
+            <li class="nav-item">
+                <h5><a style="color: white" class="nav-link" th:href="@{showInvoice}">Quản Lý Hóa Đơn</a></h5>
+            </li>
+            <li class="nav-item">
+                <h5><a style="color: white" class="nav-link" th:href="@{showAccount}">Quản Lý Tài Khoản</a></h5>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-light my-2 my-sm-0" type="button">Search</button>
+        </form>
+    </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <h2>Đanh sách HomeStay</h2>
+        <hr>
+        <h3><a th:href="@{creatHomeStay}">Tạo mới HomeStay</a></h3>
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th>ảnh</th>
+                <th>id</th>
+                <th>Tên homeStay</th>
+                <th>Kiểu homeStay</th>
+                <th>Người lớn</th>
+                <th>Trẻ con</th>
+                <th>Phòng ngủ</th>
+                <th>Phòng tắm</th>
+                <th>Kích thước</th>
+                <th>Địa chỉ</th>
+                <th>Giá</th>
+                <th>Sửa</th>
+                <th>Xóa</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="list : ${listHomeStay}">
+                <tr>
+                    <td><img th:src="${list.image}" style="width: 50px;height: 50px"></td>
+                    <td><th:block th:utext="${list.id}"/></td>
+                    <td><th:block th:utext="${list.homeStayName}"/></td>
+                    <td><th:block th:utext="${list.homeStayStyle}"/></td>
+                    <td><th:block th:utext="${list.adults}"/></td>
+                    <td><th:block th:utext="${list.child}"/></td>
+                    <td><th:block th:utext="${list.bedRoom}"/></td>
+                    <td><th:block th:utext="${list.bathRoom}"/></td>
+                    <td><th:block th:utext="${list.size}"/></td>
+                    <td><th:block th:utext="${list.address}"/></td>
+                    <td><th:block th:utext="${list.price}"/> VND</td>
+                    <td><a th:href="@{editHomeStay/__${list.id}__ }">Sửa</a></td>
+                    <td><a th:href="@{deleteHomeStay/__${list.id}__ }">Xóa</a></td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

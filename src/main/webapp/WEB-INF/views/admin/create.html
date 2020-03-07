@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-danger" style="margin:24px 0;">
+    <div class="container">
+        <div class="navbar-collapse collapse" id="navb" style="">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <h5><a style="color: white" class="nav-link" th:href="@{showlist}">Danh Sách HomeStay</a></h5>
+                </li>
+                <li class="nav-item">
+                    <h5><a style="color: white" class="nav-link" th:href="@{showInvoice}">Quản Lý Hóa Đơn</a></h5>
+                </li>
+                <li class="nav-item">
+                    <h5><a style="color: white" class="nav-link" th:href="@{showAccount}">Quản Lý Tài Khoản</a></h5>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-light my-2 my-sm-0" type="button">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <br>
+            <h2 style="text-align: center">Thêm mới HomeStay</h2>
+            <h4><th:block th:utext="${message}"/></h4>
+            <form action="creatHomeStay" th:object="${homeStay}" method="post">
+                <input type="hidden" th:field="*{id}">
+                <div class="form-group">
+                    <label >Tên HomeStay:</label>
+                    <input type="text" class="form-control" th:field="*{homeStayName}">
+                </div>
+                <div class="form-group">
+                    <label >Kiểu HomeStay:</label>
+                    <input type="text" class="form-control" th:field="*{homeStayStyle}">
+                </div>
+                <div class="row" style="margin: 10px">
+                    <div class="col-sm-3" style="margin: 10px">
+                        <div class="form-group">
+                            <label >Số người lớn:</label>
+                            <input type="number" class="form-control" th:field="*{adults}">
+                        </div>
+
+                        <div class="form-group">
+                            <label >Số trẻ em:</label>
+                            <input type="number" class="form-control" th:field="*{child}">
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3"style="margin: 10px">
+                    </div>
+
+
+                    <div class="col-sm-3"style="margin: 10px">
+                        <div class="form-group">
+                            <label >Số phòng tắm:</label>
+                            <input type="number" class="form-control" th:field="*{bathRoom}">
+                        </div>
+
+                        <div class="form-group">
+                            <label >Số phòng ngủ:</label>
+                            <input type="number" class="form-control" th:field="*{bedRoom}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="comment">Tiện ích và giới thiệu:</label>
+                    <textarea th:type="text" class="form-control" rows="5" id="comment" th:field="*{convenient}"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label >Kích Thước:</label>
+                            <input type="text" class="form-control" th:field="*{size}">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label >Giá:</label>
+                            <input type="number" class="form-control" th:field="*{price}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label >Địa Chỉ:</label>
+                    <input type="text" class="form-control" th:field="*{address}">
+                </div>
+
+                <div class="form-group">
+                    <label >Hình Ảnh:</label>
+                    <input type="text" class="form-control" th:field="*{image}">
+                </div>
+
+                <div class="form-group" style="padding-left: 250px">
+                    <button type="submit" class="btn btn-danger" style="width: 200px;">Cập Nhập</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+<div class="jumbotron text-center">
+    <h1>Bootstrap Tutorial</h1>
+    <p>Bootstrap is the most popular HTML, CSS...</p>
+</div>
+</body>
+</html>

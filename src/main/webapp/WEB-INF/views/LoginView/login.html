@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+    <h1>HOMSTAY FPOLY</h1>
+    <p>Dịch vụ đặt phòng tiện lợi nhất hện nay</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+
+        </div>
+        <div class="col-sm-4">
+            <form th:action="@{login}"  method="post">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" placeholder="ID" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" placeholder="password" id="pwd" name="pass">
+                </div>
+                <h5 th:utext="${mesage}"></h5>
+                <a th:href="@{addAccount}"><button type="button" class="btn btn-link">Đăng Ký</button></a>
+
+                <button type="button" class="btn btn-link">Quyên Mật Khẩu</button><br/>
+                <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+                <a th:href="@{/}"><button type="button" class="btn btn-primary">Quay Lại</button></a>
+            </form>
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

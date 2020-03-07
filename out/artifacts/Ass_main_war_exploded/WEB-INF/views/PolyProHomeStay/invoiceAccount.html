@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Hóa Đơn</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <i class="fa fa-cog fa-spin fa-3x fa-fw "></i>
+    <ul class="navbar-nav padding-left">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">
+                <h4>PolyBooking.com</h4>
+            </a>
+        </li>
+    </ul>
+
+</nav>
+<div class="container" style="margin-top:20px;">
+    <a th:href="@{/}"><button type="button" class="btn btn-danger">Trang chủ</button></a>
+    <hr>
+    <div class="row">
+        <th:block th:if="${account.id != 1}">
+            <th:block th:each="list : ${listInvoiceDetails}">
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Thông tin hóa đơn</h3>
+                            <h3>Mã Hóa đơn: <th:block th:utext="${list.invoiceId.id}"/></h3>
+                            <h5>Name: <th:block th:utext="${list.account.userName}"/></h5>
+                            <h5>Email: <th:block th:utext="${list.account.email}"/></h5>
+                            <img  th:src="${list.homeStayId.image}" class="rounded" alt="Cinque Terre" style="width: 300px;height: 200px;">
+                            <p><th:block th:utext="${list.homeStayId.homeStayName}"/></p>
+                            <a><h4><th:block th:utext="${list.homeStayId.homeStayStyle}" /></h4></a>
+                            <p><th:block th:utext="${list.homeStayId.address}"/></p>
+                            <p><th:block th:utext="${list.homeStayId.convenient}"/></p>
+                            <h4>Ngày nhận phòng: <th:block th:utext="${list.invoiceId.checkInDate}"/></h4>
+                            <h4>Ngày Trả phòng: <th:block th:utext="${list.invoiceId.checkOutDate}"/></h4>
+                            <h4>Số lượng phòng đặt: <th:block th:utext="${list.invoiceId.numberRoom}"/></h4>
+                            <h4>Tổng tiền <th:block th:utext="${list.invoiceId.totalPrice}"/> VND</h4>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </th:block>
+
+        <th:block th:if="${account.id == 1}">
+            <th:block th:each="list : ${listInvoiceDetails}">
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Thông tin hóa đơn</h3>
+                            <h3>Mã Hóa đơn: <th:block th:utext="${list.invoiceId.id}"/></h3>
+                            <h5>Name: <th:block th:utext="${list.invoiceId.name}"/></h5>
+                            <h5>Email: <th:block th:utext="${list.invoiceId.email}"/></h5>
+                            <img  th:src="${list.homeStayId.image}" class="rounded" alt="Cinque Terre" style="width: 300px;height: 200px;">
+                            <p><th:block th:utext="${list.homeStayId.homeStayName}"/></p>
+                            <a><h4><th:block th:utext="${list.homeStayId.homeStayStyle}" /></h4></a>
+                            <p><th:block th:utext="${list.homeStayId.address}"/></p>
+                            <p><th:block th:utext="${list.homeStayId.convenient}"/></p>
+                            <h4>Ngày nhận phòng: <th:block th:utext="${list.invoiceId.checkInDate}"/></h4>
+                            <h4>Ngày Trả phòng: <th:block th:utext="${list.invoiceId.checkOutDate}"/></h4>
+                            <h4>Số lượng phòng đặt: <th:block th:utext="${list.invoiceId.numberRoom}"/></h4>
+                            <h4>Tổng tiền <th:block th:utext="${list.invoiceId.totalPrice}"/> VND</h4>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </th:block>
+    </div>
+</div>
+</body>
+</html>
